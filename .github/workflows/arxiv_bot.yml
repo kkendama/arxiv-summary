@@ -26,4 +26,5 @@ jobs:
       env:
         DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
         GOOGLE_API_KEY: ${{ secrets.GOOGLE_API_KEY }}
+        PYTHONPATH: ${{ github.workspace }}
       run: python src/main.py 
