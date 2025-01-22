@@ -1,0 +1,24 @@
+Tranformer
+transformer
+Large Language
+large language
+LLM
+Multimodal
+multimodal
+MLLM
+VLM
+Vision Language
+vision language
+AI Agent
+AI agent
+GPT
+training AND optimizer
+attention AND Large Language Model
+synthetic data
+diffusion model
+reasoning model
+SFT
+supervised fine-tuning
+DPO
+direct policy optimization
+training AND efficiency
