@@ -20,20 +20,25 @@ def main():
     # Discord投稿用のメッセージを作成
     discord_poster = DiscordPoster()
     
-    for paper in papers:
-        # 論文の要約を生成
-        summary = summarizer.summarize(paper.summary)
-        
-        # Discordに投稿
-        message = f"""
-**{paper.title}**
-URL: {paper.entry_id}
-投稿日時: {paper.published}
+    if len(papers) == 0:
+        discord_poster.post("今回の更新はありません。")
+        return
+    
+    else:
+        for paper in papers:
+            # 論文の要約を生成
+            summary = summarizer.summarize(paper.summary)
+            
+            # Discordに投稿
+            message = f"""
+    **{paper.title}**
+    URL: {paper.entry_id}
+    投稿日時: {paper.published}
 
-要約:
-{summary}
-"""
-        discord_poster.post(message)
+    要約:
+    {summary}
+    """
+            discord_poster.post(message)
 
 if __name__ == "__main__":
     main() 
