@@ -4,7 +4,7 @@ import os
 class GeminiSummarizer:
     def __init__(self):
         self.client = OpenAI(
-            api_key=os.getenv("GEMINI_API_KEY"),
+            api_key=os.getenv("GOOGLE_API_KEY"),
             base_url="https://generativelanguage.googleapis.com/v1beta/"
         )
     
