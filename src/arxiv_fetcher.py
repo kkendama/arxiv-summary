@@ -2,10 +2,10 @@ import arxiv
 from datetime import datetime, timedelta, timezone
 
 class ArxivFetcher:
-    def __init__(self, keywords):
+    def __init__(self, keywords, hours=4):
         self.keywords = keywords
-        self.fetch_period = timedelta(hours=4)
-    
+        self.fetch_period = timedelta(hours=hours)
+ 
     def fetch_papers(self):
         # 検索クエリの作成
         query_parts = []
@@ -24,6 +24,7 @@ class ArxivFetcher:
         
         # 現在時刻から1時間前までの論文を取得
         current_time = datetime.now(timezone.utc)
+        print(current_time)
         period_ago = current_time - self.fetch_period
         
         # arXivから論文を検索
@@ -38,5 +39,7 @@ class ArxivFetcher:
             # 1時間以内の論文のみを対象とする
             if result.published.replace(tzinfo=timezone.utc) > period_ago:
                 papers.append(result)
+            else:
+                print(result.published.replace(tzinfo=timezone.utc))
                 
         return papers 

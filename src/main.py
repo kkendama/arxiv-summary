@@ -1,3 +1,5 @@
+import time
+
 from arxiv_fetcher import ArxivFetcher
 from gemini_summarizer import GeminiSummarizer
 from discord_poster import DiscordPoster
@@ -8,7 +10,7 @@ def main():
     config = Config()
     
     # arXiv論文の取得
-    fetcher = ArxivFetcher(config.keywords)
+    fetcher = ArxivFetcher(config.keywords, 1)
     papers = fetcher.fetch_papers()
 
     for paper in papers:
@@ -33,12 +35,15 @@ def main():
             message = f"""
     **{paper.title}**
     URL: {paper.entry_id}
-    投稿日時: {paper.published}
+    投稿日時: {paper.published.astimezone(timezone(timedelta(hours=+9)))}
 
     要約:
     {summary}
     """
             discord_poster.post(message)
+            
+            # 10秒待機
+            time.sleep(10)
 
 if __name__ == "__main__":
     main() 
