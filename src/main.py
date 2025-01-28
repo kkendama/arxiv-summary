@@ -12,9 +12,6 @@ def main():
     # arXiv論文の取得
     fetcher = ArxivFetcher(config.keywords, 1)
     papers = fetcher.fetch_papers()
-
-    for paper in papers:
-        print(paper.title)
     
     # Geminiによる要約
     summarizer = GeminiSummarizer()
@@ -28,6 +25,7 @@ def main():
     
     else:
         for paper in papers:
+            print("Starting paper:", paper.title)
             # 論文の要約を生成
             summary = summarizer.summarize(paper.summary)
             
