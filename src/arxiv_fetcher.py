@@ -25,7 +25,7 @@ class ArxivFetcher:
         # 現在時刻から1時間前までの論文を取得
         current_time = datetime.now(timezone.utc)
         print(current_time)
-        period_ago = current_time - self.fetch_period
+        period_ago = current_time - self.fetch_period - timedelta(hours=18)
         
         # arXivから論文を検索
         search = arxiv.Search(
